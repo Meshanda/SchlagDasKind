@@ -10,10 +10,13 @@ namespace PathCreation.Examples
         public EndOfPathInstruction endOfPathInstruction;
         public float speed = 5;
         private float _distanceTravelled;
+        private float _shift;
 
         public float DistanceTravelled => _distanceTravelled;
 
-        void Start() {
+        void Start()
+        {
+            _shift = Random.Range(0.9f, 1.1f);
             if (pathCreator != null)
             {
                 // Subscribed to the pathUpdated event so that we're notified if the path changes during the game
@@ -26,7 +29,7 @@ namespace PathCreation.Examples
             if (pathCreator != null)
             {
                 _distanceTravelled += speed * Time.deltaTime;
-                transform.position = pathCreator.path.GetPointAtDistance(_distanceTravelled, endOfPathInstruction);
+                transform.position = pathCreator.path.GetPointAtDistance(_distanceTravelled, endOfPathInstruction) * _shift;
                 //transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
             }
         }
