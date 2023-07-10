@@ -10,6 +10,9 @@ public class ProjectileMovement : MonoBehaviour
 
     public void Update()
     {
+        Quaternion rotation = Quaternion.LookRotation
+            (_target.transform.position - transform.position, transform.TransformDirection(Vector3.up));
+        transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
         transform.position += (_target.transform.position - transform.position).normalized * _speed;
     }
 
