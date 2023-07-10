@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PathCreation;
 using PathCreation.Examples;
 using UnityEngine;
 
@@ -17,7 +18,8 @@ public enum EnemyGradeDamage
 public class Enemy : MonoBehaviour
 {
     
-    public static Action onEnemyDeath;
+    public Action<Enemy> onEnemyDeath;
+    public Action<Enemy> onEnemyDestroy;
     
     public float lifePoint = 20.0f;
     public float walkSpeed = 2.0f;
@@ -40,7 +42,8 @@ public class Enemy : MonoBehaviour
         _spriteRenderer.sprite = sprite;
 
         _enemyDamage = enemyDamageOverride > 0.0f ? enemyDamageOverride : (int) enemyGradeDamage;
-        Debug.Log(_enemyDamage);
+        
+        Destroy(gameObject, 5.0f);
     }
 
     public void DamageEnemy(float damage)
@@ -49,7 +52,21 @@ public class Enemy : MonoBehaviour
 
         if (lifePoint > 0.0f) return;
         
-        onEnemyDeath.Invoke();
+        onEnemyDeath.Invoke(this);
         Destroy(gameObject);
+    }
+
+    public void SetPathCreator(PathCreator pathCreator)
+    {
+        _pathFollower.pathCreator = pathCreator;
+    }
+
+    private void OnDisable()
+    {
+        onEnemyDestroy.Invoke(this);
+    }
+
+    private void OnDestroy()
+    {
     }
 }
