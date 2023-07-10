@@ -7,7 +7,7 @@ public class Base : MonoBehaviour
 {
     public int HealthPoint;
 
-    public static Action OnLooseHealthPoint;
+    public static Action<int> OnLooseHealthPoint;
     public static event Action OnBaseDestruction;
 
     private int _currentHealthPoint;
@@ -32,22 +32,23 @@ public class Base : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            // Loose hp
-            OnLooseHealthPoint?.Invoke();
+            // Get Enemy damage
+            int enemyDamage = 1;
+
+            // Loose HP
+            OnLooseHealthPoint?.Invoke(enemyDamage);
 
             // Destroy the ennemy that contacted
             Destroy(collision.gameObject);
         }
     }
 
-    private void LooseHealthPoint()
+    private void LooseHealthPoint(int damage)
     {
-        _currentHealthPoint -= 1;
+        _currentHealthPoint -= damage;
 
         if(_currentHealthPoint <= 0)
         {
-            // Destruction of the base
-            Debug.Log("The base is destroyed");
             OnBaseDestruction?.Invoke();
         }
     }
