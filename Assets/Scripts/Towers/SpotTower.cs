@@ -11,6 +11,8 @@ namespace Towers
         [Header("Interface")]
         [SerializeField] private GameObject _interface;
 
+        [SerializeField] private GameObject _arrows;
+
         [Header("Prefabs")] 
         [SerializeField] private List<GameObject> _towerPrefabs;
         
@@ -25,6 +27,7 @@ namespace Towers
         {
             _interface.SetActive(false);
             _interfaceOn = false;
+            _arrows.SetActive(_towerPrefabs.Count > 3);
         }
 
         public void ToggleInterface()

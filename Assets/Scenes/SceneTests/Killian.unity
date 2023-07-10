@@ -1647,6 +1647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interface: {fileID: 1134163622}
+  _arrows: {fileID: 1396682288}
   _towerPrefabs:
   - {fileID: 5614869067301541297, guid: 33ec7772bc81fb948a68300081d64949, type: 3}
   - {fileID: 30608535117952353, guid: 748d050c23edd1e43875fc96f0f07404, type: 3}
