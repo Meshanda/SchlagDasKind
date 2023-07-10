@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,11 +8,12 @@ namespace Towers
 {
     public class SpotTower : MonoBehaviour
     {
-        [SerializeField] private GameObject _highlight;
-        
         [Header("Interface")]
         [SerializeField] private GameObject _interface;
 
+        [Header("Prefabs")] 
+        [SerializeField] private List<GameObject> _towerPrefabs;
+        
         private bool _interfaceOn;
 
         private void Start()
@@ -31,6 +33,12 @@ namespace Towers
             _interface.SetActive(_interfaceOn);
         }
 
+        public void InstantiateTower(int index)
+        {
+            Instantiate(_towerPrefabs[index], transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+        
         #region Buttons
 
         public void ClickLeftArrow()
@@ -46,6 +54,7 @@ namespace Towers
         public void ClickSpot(int index)
         {
             Debug.Log($"Click Spot {index}");
+            InstantiateTower(index);
         }
 
         #endregion

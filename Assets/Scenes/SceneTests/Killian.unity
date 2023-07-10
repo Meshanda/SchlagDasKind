@@ -738,7 +738,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1646,8 +1646,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f10a2772f4c36343b47ffee96456a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _highlight: {fileID: 711617641}
   _interface: {fileID: 1134163622}
+  _towerPrefabs:
+  - {fileID: 5614869067301541297, guid: 33ec7772bc81fb948a68300081d64949, type: 3}
+  - {fileID: 30608535117952353, guid: 748d050c23edd1e43875fc96f0f07404, type: 3}
+  - {fileID: 8195480111097906563, guid: e256603e5f251984987bfb6b7130b7e0, type: 3}
 --- !u!1 &787424509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,7 +2486,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3118,7 +3121,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
