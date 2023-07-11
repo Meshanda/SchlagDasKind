@@ -4,6 +4,7 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] private LayerMask _targetLayerMask;
     [SerializeField] private GameObject _projectilePrefab;
+    private SpriteRenderer _spriteRenderer;
     
     [Header("Tower Properties")]
     public int GoldCost;
@@ -22,6 +23,10 @@ public class Tower : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        _spriteRenderer.sprite = TowerSprite;
+        
         _zone.localScale = Vector3.one * Range * (1 / transform.localScale.x) * 2;
     }
 

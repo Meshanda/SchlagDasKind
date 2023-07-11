@@ -5122,10 +5122,12 @@ MonoBehaviour:
   _preview3: {fileID: 7734250786103711252}
   _interface: {fileID: 9086288702087887128}
   _arrows: {fileID: 9086288702349615502}
-  _towerPrefabs:
+  _towersList: {fileID: 11400000, guid: c6435b396329ee94385b9c0dcf2278c6, type: 2}
+  _baseTowerPrefabs:
   - {fileID: 5614869067301541297, guid: 33ec7772bc81fb948a68300081d64949, type: 3}
   - {fileID: 30608535117952353, guid: 748d050c23edd1e43875fc96f0f07404, type: 3}
   - {fileID: 8195480111097906563, guid: e256603e5f251984987bfb6b7130b7e0, type: 3}
+  PrefabTest: {fileID: 8195480111097906563, guid: 70271ca3b321b6d49a401bf5fb6bad59, type: 3}
 --- !u!1 &9086288700356453335
 GameObject:
   m_ObjectHideFlags: 0
