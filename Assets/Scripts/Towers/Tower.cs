@@ -10,6 +10,9 @@ public class Tower : MonoBehaviour
     private float currentTimeBetweenShoot;
     [SerializeField] private GameObject _projectilePrefab;
     public float Range;
+    [Header("Bullet Properties")]
+    public float BulletPower;
+    public float SpeedPower;
     // Start is called before the first frame update
 
     public void OnDrawGizmos()
@@ -37,6 +40,7 @@ public class Tower : MonoBehaviour
                 return;
             }
             pm.SetTarget(_target);
+            pm.SetBulletProperties(SpeedPower, BulletPower);
             Debug.Log("Shoot "+_target);
         }
     }

@@ -1,0 +1,61 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using PathCreation;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+public class EnemySpawner : MonoBehaviour
+{
+    [SerializeField] private PathCreator _pathCreator;
+
+    private List<GameObject> _enemiesToSpawn;
+
+    private List<Enemy> _enemiesSpawned;
+    private float _interval;
+    
+    public bool IsReady => _enemiesSpawned.Count == 0;
+
+    public void SpawnEnemies(List<GameObject> enemies)
+    {
+        _enemiesToSpawn.Clear();
+        _enemiesToSpawn = enemies;
+        
+        if(_enemiesToSpawn.Count > 0)
+            StartCoroutine(SpawnEnemy());
+    }
+
+    private void Start()
+    {
+        _enemiesSpawned = new List<Enemy>();
+    }
+
+
+    private void OnSpawnerEnemyDestroy(Enemy destroyed)
+    {
+        _enemiesSpawned.Remove(destroyed);
+
+        if (_enemiesSpawned.Count <= 0)
+        {
+            // do things here is necessary
+        }
+    }
+
+    private IEnumerator SpawnEnemy()
+    {
+        foreach (GameObject enemy in _enemiesToSpawn)
+        {
+            _interval = Random.Range(0.1f, 0.5f);
+            Debug.Log("enemy spawned");
+            
+            GameObject enemySpawned = Instantiate(enemy);
+            var enemyScript = enemySpawned.GetComponent<Enemy>();
+            enemyScript.SetPathCreator(_pathCreator);
+            
+            _enemiesSpawned.Add(enemyScript);
+            enemyScript.onEnemyDestroy += OnSpawnerEnemyDestroy;
+            yield return new WaitForSeconds(_interval);
+        }
+    }
+}
