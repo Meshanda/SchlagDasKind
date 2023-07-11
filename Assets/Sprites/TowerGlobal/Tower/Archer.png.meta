@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e3f2e8f836d9ce744b3eadba64ac7e39
+guid: ae2a57f20daa6d349a023567b98e562f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1_0
+      name: 5_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 5
         y: 0
-        width: 32
-        height: 64
+        width: 62
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3a33fc8e305b9a488e5b20ee5bb6bc9
-      internalID: 1354808691
+      spriteID: f4be064a66a18e942a767dd228e5906f
+      internalID: 1616861861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1_1
+      name: 5_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 75
         y: 0
-        width: 32
-        height: 64
+        width: 62
+        height: 91
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87ce44baca0af2b44bcd4ed500b9b566
-      internalID: 2087300944
+      spriteID: c23e267059f5aa4488802cfc4fed6127
+      internalID: -478620787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1_2
+      name: 5_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 145
         y: 0
-        width: 32
-        height: 64
+        width: 62
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 299169848c4216b46b59b9a3ab4bb6a5
-      internalID: 762319014
+      spriteID: 7b9858138852a6b4cad6fea79c2078c8
+      internalID: -2010060922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1_3
+      name: 5_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 215
         y: 0
-        width: 32
-        height: 64
+        width: 62
+        height: 93
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,50 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f6f386df643465418d55e88c6199307
-      internalID: -921665338
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 916caba757fdf8342a0888a33bb98225
-      internalID: 1179543961
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63e439bb1e591414998dea54f550d4bd
-      internalID: -1172180707
+      spriteID: 715c67d2ddb82a147b4f77ae4202f7d5
+      internalID: 596990481
       vertices: []
       indices: 
       edges: []
@@ -253,12 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      1_1: 2087300944
-      1_0: 1354808691
-      1_2: 762319014
-      1_5: -1172180707
-      1_4: 1179543961
-      1_3: -921665338
+      5_1: -478620787
+      5_2: -2010060922
+      5_0: 1616861861
+      5_3: 596990481
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
