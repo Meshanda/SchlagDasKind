@@ -9,21 +9,23 @@ public class ModManager : MonoBehaviour
     [SerializeField] private Transform _panel;
     [SerializeField] private GameObject _modTogglePrefab;
     
-    private readonly string ModFolderPath = Application.streamingAssetsPath + "/Mods";
+    public readonly string ModFolderPath = Application.streamingAssetsPath + "/Mods/";
     private const string TowersJsonFileName = "towers.json";
     private const string EnemiesJsonFileName = "enemies.json";
     private const string WavesJsonFileName = "waves.json";
     private const string BaseJsonFileName = "base.json";
 
     private readonly List<GameObject> _modToggles = new ();
+    private Dictionary<string, bool> _previousMods = new ();
 
     private void Start()
     {
+        _previousMods = ModList.Mods.ToDictionary(mod => mod.Key, mod => mod.Value);
         InitFolder();
         RefreshMods();
     }
 
-    private void RefreshMods()
+    public void RefreshMods()
     {
         ReadMods();
         DisplayMods();
@@ -71,8 +73,14 @@ public class ModManager : MonoBehaviour
         ModList.Mods[key] = status;
     }
 
-    private void ApplyMods()
+    public void CancelSelection()
     {
+        ModList.Mods = _previousMods.ToDictionary(mod => mod.Key, mod => mod.Value);
+    }
+
+    public void ApplyMods()
+    {
+        _previousMods = ModList.Mods.ToDictionary(mod => mod.Key, mod => mod.Value);
         foreach (var mod in ModList.Mods)
         {
             if (!mod.Value) continue;
@@ -132,18 +140,4 @@ public class ModManager : MonoBehaviour
     {
         return Path.GetFileName(Path.GetDirectoryName(path +"/"));
     }
-
-    #region Buttons
-
-    public void ClickApply()
-    {
-        ApplyMods();
-    }
-
-    public void ClickRefresh()
-    {
-        RefreshMods();
-    }
-
-    #endregion
 }
