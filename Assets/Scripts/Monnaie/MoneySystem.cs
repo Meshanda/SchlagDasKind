@@ -14,6 +14,13 @@ namespace Monnaie
 
         [SerializeField] private IntVariable _moneySO;
 
+        public int StartingGold;
+
+        private void Start() 
+        {
+            _moneySO.value = StartingGold;
+        }
+
         private void OnEnable()
         {
             AddMoney += OnMoneyAdded;

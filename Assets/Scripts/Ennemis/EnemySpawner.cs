@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private PathCreator _pathCreator;
 
-    private List<GameObject> _enemiesToSpawn;
+    private List<GameObject> _enemiesToSpawn = new List<GameObject>();
 
     private List<Enemy> _enemiesSpawned;
     private float _interval;
@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (_enemiesSpawned.Count <= 0)
         {
-            // do things here is necessary
+            // do things here if necessary
         }
     }
 
@@ -47,9 +47,8 @@ public class EnemySpawner : MonoBehaviour
         foreach (GameObject enemy in _enemiesToSpawn)
         {
             _interval = Random.Range(0.1f, 0.5f);
-            Debug.Log("enemy spawned");
             
-            GameObject enemySpawned = Instantiate(enemy);
+            GameObject enemySpawned = Instantiate(enemy, transform.position, Quaternion.identity);
             var enemyScript = enemySpawned.GetComponent<Enemy>();
             enemyScript.SetPathCreator(_pathCreator);
             

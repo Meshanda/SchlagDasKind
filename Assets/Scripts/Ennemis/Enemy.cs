@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     public float walkSpeed = 2.0f;
     public EnemyGradeDamage enemyGradeDamage = EnemyGradeDamage.Weak;
     public float enemyDamageOverride = 0.0f;
+    public int GoldEarned;
     public Sprite sprite;
 
     private float _enemyDamage;
@@ -43,7 +44,7 @@ public class Enemy : MonoBehaviour
 
         _enemyDamage = enemyDamageOverride > 0.0f ? enemyDamageOverride : (int) enemyGradeDamage;
         
-        Destroy(gameObject, 5.0f);
+        //Destroy(gameObject, 5.0f);
     }
 
     public void DamageEnemy(float damage)
@@ -51,8 +52,8 @@ public class Enemy : MonoBehaviour
         lifePoint -= damage;
 
         if (lifePoint > 0.0f) return;
-        
-        onEnemyDeath.Invoke(this);
+        Monnaie.MoneySystem.AddMoney(GoldEarned);
+        onEnemyDeath?.Invoke(this);
         Destroy(gameObject);
     }
 

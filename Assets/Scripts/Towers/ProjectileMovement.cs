@@ -10,6 +10,12 @@ public class ProjectileMovement : MonoBehaviour
 
     public void Update()
     {
+        if (_target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Quaternion rotation = Quaternion.LookRotation
             (_target.transform.position - transform.position, transform.TransformDirection(Vector3.up));
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
@@ -30,7 +36,7 @@ public class ProjectileMovement : MonoBehaviour
     {
         if (_target != collision)
             return;
-        //collision.GetComponent<>().DoDamage(Damage)
+        collision.GetComponent<Enemy>().DamageEnemy(Damage);
 
         Destroy(gameObject);
     } 
