@@ -1,16 +1,16 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using Monnaie;
+using ScriptableObjects.Variables;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Towers
 {
     public class SpotTower : MonoBehaviour
     {
+        [SerializeField] private IntVariable _moneySO;
+        
         [Header("Interface")]
         [SerializeField] private GameObject _interface;
-
         [SerializeField] private GameObject _arrows;
 
         [Header("Prefabs")] 
@@ -36,9 +36,9 @@ namespace Towers
             _interface.SetActive(_interfaceOn);
         }
 
-        public void InstantiateTower(int index)
+        public void InstantiateTower(GameObject prefab)
         {
-            Instantiate(_towerPrefabs[index], transform.position, Quaternion.identity);
+            Instantiate(prefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
         
@@ -57,7 +57,23 @@ namespace Towers
         public void ClickSpot(int index)
         {
             Debug.Log($"Click Spot {index}");
-            InstantiateTower(index);
+            if (!_towerPrefabs[index].TryGetComponent(out Tower tower)) return;
+
+            if (PayTower(tower.GoldCost))
+                InstantiateTower(tower.gameObject);
+            else
+                ToggleInterface();
+        }
+
+        private bool PayTower(int towerGoldCost)
+        {
+            if (_moneySO.value >= towerGoldCost)
+            {
+                MoneySystem.AddMoney(-towerGoldCost);
+                return true;
+            }
+
+            return false;
         }
 
         #endregion

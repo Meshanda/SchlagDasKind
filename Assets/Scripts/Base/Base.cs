@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Base : MonoBehaviour
 {
-    public int HealthPoint;
+    public float HealthPoint;
 
-    public static Action<int> OnLooseHealthPoint;
+    public static Action<float> OnLooseHealthPoint;
     public static event Action OnBaseDestruction;
 
-    private int _currentHealthPoint;
+    private float _currentHealthPoint;
 
     private void Start()
     {
@@ -33,7 +33,11 @@ public class Base : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             // Get Enemy damage
-            int enemyDamage = 1;
+            Enemy enemy = collision.GetComponent<Enemy>();
+            if (!enemy)
+                return;
+
+            float enemyDamage = enemy.EnemyDamage;
 
             // Loose HP
             OnLooseHealthPoint?.Invoke(enemyDamage);
@@ -43,7 +47,7 @@ public class Base : MonoBehaviour
         }
     }
 
-    private void LooseHealthPoint(int damage)
+    private void LooseHealthPoint(float damage)
     {
         _currentHealthPoint -= damage;
 
