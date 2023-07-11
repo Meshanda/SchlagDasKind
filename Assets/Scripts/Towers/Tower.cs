@@ -5,16 +5,22 @@ using UnityEngine.Serialization;
 
 public class Tower : MonoBehaviour
 {
-    private Collider2D _target;
     [SerializeField] private LayerMask _targetLayerMask;
-    public float TimeBetweenShoot;
-    private float currentTimeBetweenShoot;
     [SerializeField] private GameObject _projectilePrefab;
+    
+    [Header("Tower Properties")]
+    public int GoldCost;
+    public Sprite TowerSprite;
+    public float TimeBetweenShoot;
     public float Range;
+    
     [Header("Bullet Properties")]
     public float BulletPower;
     public float SpeedPower;
-    // Start is called before the first frame update
+
+    
+    private float _currentTimeBetweenShoot;
+    private Collider2D _target;
 
     public void OnDrawGizmos()
     {
@@ -25,14 +31,14 @@ public class Tower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTimeBetweenShoot -= Time.deltaTime;
+        _currentTimeBetweenShoot -= Time.deltaTime;
         Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, Range, _targetLayerMask, -Mathf.Infinity, Mathf.Infinity);
 
-        if(currentTimeBetweenShoot <= 0 &&inRange.Length > 0) 
+        if(_currentTimeBetweenShoot <= 0 &&inRange.Length > 0) 
         {
             if (!IsTargetInRangeAndAlive())
                 _target = FindClosest(inRange);
-            currentTimeBetweenShoot = TimeBetweenShoot;
+            _currentTimeBetweenShoot = TimeBetweenShoot;
             GameObject go = Instantiate(_projectilePrefab, transform.position, Quaternion.identity);
             ProjectileMovement pm = go.GetComponent<ProjectileMovement>();
             if(pm == null)
