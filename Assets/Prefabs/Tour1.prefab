@@ -100,8 +100,10 @@ MonoBehaviour:
   _targetLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  TimeBetweenShoot: 1.5
   _projectilePrefab: {fileID: 7528030729702472570, guid: 7074b33ec14d09346928566c3929a16d, type: 3}
+  GoldCost: 50
+  TowerSprite: {fileID: 0}
+  TimeBetweenShoot: 1.5
   Range: 1.5
   BulletPower: 4
   SpeedPower: 0.04

@@ -59,16 +59,21 @@ namespace Towers
             Debug.Log($"Click Spot {index}");
             if (!_towerPrefabs[index].TryGetComponent(out Tower tower)) return;
 
-            PayTower(tower.GoldCost);
-            InstantiateTower(tower.gameObject);
-        }
-
-        private void PayTower(int towerGoldCost)
-        {
-            if (_moneySO.value >= towerGoldCost)
-                MoneySystem.AddMoney(-towerGoldCost);
+            if (PayTower(tower.GoldCost))
+                InstantiateTower(tower.gameObject);
             else
                 ToggleInterface();
+        }
+
+        private bool PayTower(int towerGoldCost)
+        {
+            if (_moneySO.value >= towerGoldCost)
+            {
+                MoneySystem.AddMoney(-towerGoldCost);
+                return true;
+            }
+
+            return false;
         }
 
         #endregion
