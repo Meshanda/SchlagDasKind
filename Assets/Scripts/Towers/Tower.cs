@@ -11,10 +11,17 @@ public class Tower : MonoBehaviour
     private float currentTimeBetweenShoot;
     [SerializeField] private GameObject _projectilePrefab;
     public float Range;
+    [SerializeField] private Transform _zone;
     [Header("Bullet Properties")]
     public float BulletPower;
     public float SpeedPower;
+
+
     // Start is called before the first frame update
+    public void Start()
+    {
+        _zone.localScale = Vector3.one * Range* (1/transform.localScale.x)*2;
+    }
 
     public void OnDrawGizmos()
     {
