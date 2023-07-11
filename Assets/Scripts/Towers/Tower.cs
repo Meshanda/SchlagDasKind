@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Tower : MonoBehaviour
 {
     private Collider2D _target;
-    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private LayerMask _targetLayerMask;
     public float TimeBetweenShoot;
     private float currentTimeBetweenShoot;
     [SerializeField] private GameObject _projectilePrefab;
@@ -25,7 +26,7 @@ public class Tower : MonoBehaviour
     void Update()
     {
         currentTimeBetweenShoot -= Time.deltaTime;
-        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, Range, _layerMask, -Mathf.Infinity, Mathf.Infinity);
+        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, Range, _targetLayerMask, -Mathf.Infinity, Mathf.Infinity);
 
         if(currentTimeBetweenShoot <= 0 &&inRange.Length > 0) 
         {
@@ -36,7 +37,7 @@ public class Tower : MonoBehaviour
             ProjectileMovement pm = go.GetComponent<ProjectileMovement>();
             if(pm == null)
             {
-                Debug.LogError("WTF projectile movement où ?");
+                Debug.LogError("WTF projectile movement oï¿½ ?");
                 return;
             }
             pm.SetTarget(_target);
