@@ -110,6 +110,7 @@ MonoBehaviour:
   Range: 1.5
   BulletPower: 4
   SpeedPower: 0.04
+  _zone: {fileID: 825886127247848272}
 --- !u!61 &401773049129641488
 BoxCollider2D:
   m_ObjectHideFlags: 0
