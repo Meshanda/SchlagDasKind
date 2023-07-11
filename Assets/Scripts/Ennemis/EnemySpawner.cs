@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private PathCreator _pathCreator;
 
-    private List<GameObject> _enemiesToSpawn;
+    private List<GameObject> _enemiesToSpawn = new List<GameObject>();
 
     private List<Enemy> _enemiesSpawned;
     private float _interval;

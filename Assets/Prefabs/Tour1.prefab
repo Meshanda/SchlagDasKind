@@ -104,4 +104,4 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 7528030729702472570, guid: 7074b33ec14d09346928566c3929a16d, type: 3}
   Range: 1.5
   BulletPower: 4
-  SpeedPower: 4
+  SpeedPower: 0.04

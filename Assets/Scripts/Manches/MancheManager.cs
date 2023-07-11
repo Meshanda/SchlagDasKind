@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MancheManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _spawners;
+    [SerializeField] private EnemySpawner[] _spawners;
     [SerializeField] private List<Waves> _waves;
 
     public float TimeBeforeNextWave;
@@ -30,15 +30,19 @@ public class MancheManager : MonoBehaviour
             }
         }
 
+        foreach (EnemySpawner sp in _spawners)
+        {
+            sp.SpawnEnemies(gos);
+        }
+
         _currentTimeBeforeNextWave = TimeBeforeNextWave;
     }
 
     public bool AreFilled() 
     {
-        return false;
-        foreach (GameObject go in _spawners) 
+        foreach (EnemySpawner go in _spawners) 
         {
-            if (_spawners != null)
+            if (!go.IsReady)
                 return false;
         }
         return true;
@@ -47,17 +51,28 @@ public class MancheManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_currentWave >= _waves.Count)
+        {
+            Debug.Log("fin");
+            return;
+        }
+        
         if (!AreFilled())
         {
             _currentTimeBeforeNextWave -= Time.deltaTime;
-            AddGold();
-            _currentWave++;
+            if (!_countStarted) 
+            {
+                AddGold();
+                _currentWave++;
+            }
+
         }
            
 
         if(_currentTimeBeforeNextWave <= 0) 
         {
             _currentTimeBeforeNextWave = TimeBeforeNextWave;
+            _countStarted = false;
             FillSpawner();
             // Add Coins 
         }
@@ -65,12 +80,13 @@ public class MancheManager : MonoBehaviour
 
     public void AddGold() 
     {
-        if (_countStarted = false)
+        if (_countStarted = false || _currentWave >= _waves.Count)
             return;
 
+        Monnaie.MoneySystem.AddMoney((int)_waves[_currentWave].Gold);
         // ADD GOLD
-        float goldToAdd = _waves[_currentWave].Gold;
         _countStarted = true;
+
     }
 }
 [Serializable]
