@@ -22196,6 +22196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _panel: {fileID: 1535857456}
   _modTogglePrefab: {fileID: 7060278966285267771, guid: 9e4e8d0d44970fb4480aea5ffac427c5, type: 3}
+  _towersList: {fileID: 11400000, guid: c6435b396329ee94385b9c0dcf2278c6, type: 2}
 --- !u!1 &1983552108
 GameObject:
   m_ObjectHideFlags: 0
