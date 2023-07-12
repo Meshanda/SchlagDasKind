@@ -18,7 +18,7 @@ namespace ScriptableObjects.Game
             
             
 
-            inTowerData.CreateSpriteFromPath(inModPath);
+            inTowerData.CreateTowerSprite(inModPath);
             value.Add(inTowerData);
         }
         
