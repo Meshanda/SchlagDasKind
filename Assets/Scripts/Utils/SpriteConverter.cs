@@ -21,7 +21,6 @@ public static class SpriteConverter
                 Texture2D spriteTexture = tex2D;
                 outSprite = Sprite.Create(spriteTexture, new Rect(0, 0, spriteTexture.width, spriteTexture.height),pivot);
 
-                Debug.Log("Sprite created");
                 return outSprite;
             }
         }
@@ -40,7 +39,6 @@ public static class SpriteConverter
                 Texture2D spriteTexture = tex2D;
                 outSprite = Sprite.Create(spriteTexture, new Rect(0, 0, spriteTexture.width, spriteTexture.height), new Vector2(0.5f,0.5f));
 
-                Debug.Log("Sprite created");
                 return outSprite;
             }
         }

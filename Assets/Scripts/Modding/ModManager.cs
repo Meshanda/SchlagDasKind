@@ -136,7 +136,6 @@ public class ModManager : MonoBehaviour
                     _enemyList.AddEnemyData(enemyData, inModPath);
                     break;
                 case WavesJsonFileName:
-                    Debug.Log("A");
                     List<WaveData> waveData = Utils.JsonConverter.GenericParseJson<List<WaveData>>(jsonString);
                     _waveList.AddWaveData(waveData);
                     break;

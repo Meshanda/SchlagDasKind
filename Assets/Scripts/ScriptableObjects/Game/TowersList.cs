@@ -29,13 +29,5 @@ namespace ScriptableObjects.Game
                 AddTowerData(towerData, inModPath);
             }
         }
-        
-        /*public void ReadValues()
-        {
-            foreach (TowerData towerData in value)
-            {
-                Debug.Log($"gold : {towerData.goldCost}\nvisual : {towerData.towerVisual}\ntimeBetweenShoot : {towerData.timeBetweenShoot}\name reference : {towerData.nameReference}");
-            }
-        }*/
     }
 }
