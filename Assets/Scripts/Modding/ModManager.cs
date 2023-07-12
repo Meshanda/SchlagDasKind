@@ -11,6 +11,8 @@ public class ModManager : MonoBehaviour
     [SerializeField] private Transform _panel;
     [SerializeField] private GameObject _modTogglePrefab;
     [SerializeField] private TowersList _towersList;
+    [SerializeField] private EnemyList _enemyList;
+    [SerializeField] private WaveList _waveList;
 
     public readonly string ModFolderPath = Application.streamingAssetsPath + "/Mods/";
     private const string TowersJsonFileName = "towers.json";
@@ -86,6 +88,10 @@ public class ModManager : MonoBehaviour
     {
         if(_towersList.value != null)
             _towersList.value.Clear();
+        if (_enemyList.value != null)
+            _enemyList.value.Clear();
+        if (_waveList.value != null)
+            _waveList.value.Clear();
     }
 
     public void ApplyMods()
@@ -114,8 +120,8 @@ public class ModManager : MonoBehaviour
     {
         foreach (var file in modFiles)
         {
+            
             var filename = Path.GetFileName(file);
-
             var jsonString = OpenJsonFile(file);
             
             switch (filename)
@@ -123,16 +129,19 @@ public class ModManager : MonoBehaviour
                 case TowersJsonFileName:
                     List<TowerData> towerData = Utils.JsonConverter.GenericParseJson<List<TowerData>>(jsonString);
                     _towersList.AddTowerData(towerData, inModPath);
-                    continue;
+                    break;
                 case EnemiesJsonFileName:
-                    // TODO: Call2
-                    return;
+                    List<EnemyData> enemyData = Utils.JsonConverter.GenericParseJson<List<EnemyData>>(jsonString);
+                    _enemyList.AddEnemyData(enemyData, inModPath);
+                    break;
                 case WavesJsonFileName:
-                    // TODO: Call3
-                    return;
+                    Debug.Log("A");
+                    List<WaveData> waveData = Utils.JsonConverter.GenericParseJson<List<WaveData>>(jsonString);
+                    _waveList.AddWaveData(waveData);
+                    break;
                 case BaseJsonFileName:
                     // TODO: Call4
-                    return;
+                    break;
             }
         }
     }

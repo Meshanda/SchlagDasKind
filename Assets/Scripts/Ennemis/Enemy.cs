@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     public int GoldEarned;
     public Sprite sprite;
 
+    public string nameReference;
     private float _enemyDamage;
     public float EnemyDamage => _enemyDamage;
     

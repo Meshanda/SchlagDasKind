@@ -7,9 +7,9 @@ public class MancheManager : MonoBehaviour
     [SerializeField] private EnemySpawner[] _spawners;
     [SerializeField] private List<Waves> _waves;
 
-    public float TimeBeforeNextWave;
-    private float _currentTimeBeforeNextWave;
-    private int _currentWave;
+    protected float TimeBeforeNextWave;
+    protected float _currentTimeBeforeNextWave;
+    protected int _currentWave;
     private bool _countStarted;
 
     public void Start()
@@ -17,7 +17,7 @@ public class MancheManager : MonoBehaviour
         _currentTimeBeforeNextWave = 0;
     }
 
-    public void FillSpawner() 
+    public virtual void FillSpawner() 
     {
         List<GameObject> gos = new List<GameObject>();
 
