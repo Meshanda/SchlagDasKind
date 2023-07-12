@@ -40,7 +40,7 @@ public class TowerData
 
     public async Task<bool> CreateTowerSprite(string modPath)
     {
-        _towerSprite = await SpriteConverter.CreateSpriteFromPath($"{modPath}/{towerVisual}");
+        _towerSprite = await SpriteConverter.CreateSpriteFromPath($"{modPath}/{towerVisual}", new Vector2(0.5f,0.31f));
         return true;
     }
 }
