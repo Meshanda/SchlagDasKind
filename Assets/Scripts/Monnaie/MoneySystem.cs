@@ -19,6 +19,7 @@ namespace Monnaie
         private void Start() 
         {
             _moneySO.value = StartingGold;
+            UpdateMoney?.Invoke(_moneySO.value);
         }
 
         private void OnEnable()
