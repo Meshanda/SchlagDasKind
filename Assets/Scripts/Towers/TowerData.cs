@@ -35,7 +35,8 @@ public class TowerData
         toSet.SpeedPower = bulletSpeedPower;
         toSet.TimeBetweenShoot = timeBetweenShoot;
         
-        toSet.TowerSprite = _towerSprite;
+        if(_towerSprite != null)
+            toSet.TowerSprite = _towerSprite;
     }
 
     public async Task<bool> CreateTowerSprite(string modPath)
