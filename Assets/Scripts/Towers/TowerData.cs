@@ -51,15 +51,12 @@ public class TowerData
             
             if (tex2D.LoadImage(fileData))
             {
-                Debug.Log("regardez moi je suis load, (je veux chanter)");
                 Texture2D spriteTexture = tex2D;
                 _towerSprite = Sprite.Create(spriteTexture, new Rect(0, 0, spriteTexture.width, spriteTexture.height),new Vector2(0.5f,0.31f));
  
                 return true;
             }
         }
-
-        Debug.Log("regardez moi je suis nul, (je veux chanter)");
         return false;
     }
 }

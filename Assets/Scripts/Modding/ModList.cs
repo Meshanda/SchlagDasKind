@@ -16,19 +16,10 @@ public static class ModList
         ClearModList();
         WriteModListJson(Mods);
     }
-
-    public static void LoadModListJson()
-    {
-        using var streamReader = new StreamReader(_savePath);
-        var json = streamReader.ReadToEnd();
-        
-        var newModList = Utils.JsonConverter.GenericParseJson<Dictionary<string, bool>>(json);
-        Mods = newModList.ToDictionary(mod => mod.Key, mod => mod.Value);
-    }
-
+    
     private static void ClearModList()
     {
-        if (File.Exists(_savePath))
+        if (FileExists())
             File.Delete(_savePath);
     }
 
@@ -36,5 +27,35 @@ public static class ModList
     {
         Directory.CreateDirectory(Path.GetDirectoryName(_savePath));
         File.WriteAllText(_savePath, JsonConvert.SerializeObject(modsList, Formatting.Indented));
+    }
+    
+    public static void LoadModListJson()
+    {
+        if (!FileExists())
+            InitFile();
+            
+        using var streamReader = new StreamReader(_savePath);
+        var json = streamReader.ReadToEnd();
+        
+        var newModList = Utils.JsonConverter.GenericParseJson<Dictionary<string, bool>>(json);
+        Mods = newModList.ToDictionary(mod => mod.Key, mod => mod.Value);
+    }
+
+    private static void InitFile()
+    {
+        WriteModListJson(new Dictionary<string, bool>());
+    }
+
+    private static bool FileExists()
+    {
+        if (File.Exists(Path.GetDirectoryName(_savePath)))
+        {
+            if (File.Exists(_savePath))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
