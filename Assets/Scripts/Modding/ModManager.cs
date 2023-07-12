@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using MoonSharp.Interpreter;
 using Newtonsoft.Json;
 using ScriptableObjects.Game;
 using UnityEngine;
@@ -144,11 +145,17 @@ public class ModManager : MonoBehaviour
                     break;
                 case LuaModFileName:
                     var luaString = File.ReadAllText(file);
+                    Script script = new Script();
+
+                    script.DoString(luaString);
+
+                    DynValue res = script.Globals.Get("Tower_name");
                     var struc = new TowerModStruct
                     {
                         lua = luaString,
-                        towerName = "a"
+                        towerName = res.String
                     };
+                    Debug.Log(res.String);
                     _towerModList.AddTowerMod(struc);
                     break;
             }
