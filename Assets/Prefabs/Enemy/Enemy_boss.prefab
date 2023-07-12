@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 875522499274896150}
   - component: {fileID: 8111472428216350690}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: Enemy_boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 875522499274896146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.87, y: -1.72, z: 0}
-  m_LocalScale: {x: 0.16, y: 0.16, z: 0.16}
+  m_LocalScale: {x: 0.18000002, y: 0.18000002, z: 0.18000002}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 875522500181663075}
@@ -62,12 +62,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692dc7b33ff48344687866d320a1a100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoint: 10
-  walkSpeed: 1
-  enemyGradeDamage: 3
+  lifePoint: 300
+  walkSpeed: 0.4
+  enemyGradeDamage: 50
   enemyDamageOverride: 0
-  GoldEarned: 10
-  sprite: {fileID: 5978898516894778253, guid: 17c558ddb31742c42894aa507b18c308, type: 3}
+  GoldEarned: 200
+  sprite: {fileID: -7211942938903408927, guid: 2366eae9f40af86419045ff062bfad24, type: 3}
   nameReference: 
   _pathFollower: {fileID: 875522499274896149}
   _spriteRenderer: {fileID: 875522500181663074}
@@ -170,7 +170,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 5978898516894778253, guid: 17c558ddb31742c42894aa507b18c308, type: 3}
+  m_Sprite: {fileID: -7211942938903408927, guid: 2366eae9f40af86419045ff062bfad24, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
