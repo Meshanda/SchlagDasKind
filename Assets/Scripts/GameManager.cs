@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform _emplacementParent;
     public Level CurrentLevel;
     
-    
     public static Action<Transform> SpawnEmplacement;
     
     [HideInInspector] public bool GameWon;
