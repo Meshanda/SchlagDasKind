@@ -22,7 +22,7 @@ namespace DefaultNamespace
 
             List<TowerData> towerData = Utils.JsonConverter.GenericParseJson<List<TowerData>>(JsonAsString);
             
-            towersList.AddTowerData(towerData);
+            //towersList.AddTowerData(towerData);
             
             //towersList.ReadValues();
             

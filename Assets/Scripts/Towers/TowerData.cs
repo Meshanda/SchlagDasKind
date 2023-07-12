@@ -38,25 +38,25 @@ public class TowerData
         toSet.TowerSprite = _towerSprite;
     }
 
-    public async Task<bool> CreateSpriteFromPath()
+    public async Task<bool> CreateSpriteFromPath(string modPath)
     {
         Texture2D tex2D;
+        string finalPath = modPath + towerVisual;
 
-        if (File.Exists(towerVisual)){
-            var fileData = await File.ReadAllBytesAsync(towerVisual);
+        finalPath = finalPath.Replace("//", "/");
+
+        if (File.Exists(finalPath)){
+            var fileData = await File.ReadAllBytesAsync(finalPath);
             tex2D = new Texture2D(2, 2);
             
             if (tex2D.LoadImage(fileData))
             {
-                Debug.Log("regardez moi je suis load, (je veux chanter)");
                 Texture2D spriteTexture = tex2D;
                 _towerSprite = Sprite.Create(spriteTexture, new Rect(0, 0, spriteTexture.width, spriteTexture.height),new Vector2(0.5f,0.31f));
  
                 return true;
             }
         }
-
-        Debug.Log("regardez moi je suis nul, (je veux chanter)");
         return false;
     }
 }
