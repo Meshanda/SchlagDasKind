@@ -24,6 +24,7 @@ public class ModManager : MonoBehaviour
     private void Start()
     {
         ModList.LoadModListJson();
+        ApplyMods();
         _previousMods = ModList.Mods.ToDictionary(mod => mod.Key, mod => mod.Value);
         InitFolder();
         RefreshMods();
