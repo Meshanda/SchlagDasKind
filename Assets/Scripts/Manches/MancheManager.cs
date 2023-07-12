@@ -8,7 +8,7 @@ public class MancheManager : MonoBehaviour
     [SerializeField] private List<Waves> _waves;
     public static event Action GameWon;
 
-    protected float TimeBeforeNextWave;
+    [SerializeField] protected float TimeBeforeNextWave;
     protected float _currentTimeBeforeNextWave;
     protected int _currentWave;
     private bool _countStarted;
@@ -38,7 +38,7 @@ public class MancheManager : MonoBehaviour
         _currentTimeBeforeNextWave = TimeBeforeNextWave;
     }
 
-    public bool AreFilled() 
+    public virtual bool AreFilled() 
     {
         foreach (EnemySpawner go in _spawners) 
         {
@@ -51,6 +51,7 @@ public class MancheManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (_currentWave >= _waves.Count)
         {
             Debug.Log("fin");
@@ -61,11 +62,13 @@ public class MancheManager : MonoBehaviour
         
         if (!AreFilled())
         {
+            Debug.Log("update");
             _currentTimeBeforeNextWave -= Time.deltaTime;
             if (!_countStarted) 
             {
                 AddGold();
                 _currentWave++;
+                Debug.Log("added");
             }
 
         }

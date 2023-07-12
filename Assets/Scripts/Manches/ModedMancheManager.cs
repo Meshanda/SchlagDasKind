@@ -9,12 +9,13 @@ public class ModedMancheManager : MancheManager
     [SerializeField] private List<ModdedEnemieSpawner> _spawnerModed;
     // Start is called before the first frame update
     public override void FillSpawner() 
-    { 
+    {
         if(waveList.value == null || waveList.value.Count == 0 
             || enemyList.value == null || enemyList.value.Count == 0)
         {
             base.FillSpawner();
         }
+        Debug.Log(_currentWave);
         List<EnemyData> gos = new List<EnemyData>();
 
         foreach (var enemi in waveList.value[_currentWave].wave)
@@ -42,5 +43,21 @@ public class ModedMancheManager : MancheManager
                 return data;
         }
         return enemyList.value[0];
+    }
+
+    public override bool AreFilled()
+    {
+        if (waveList.value == null || waveList.value.Count == 0
+               || enemyList.value == null || enemyList.value.Count == 0)
+        {
+            return base.AreFilled();
+        }
+
+        foreach (ModdedEnemieSpawner go in _spawnerModed)
+        {
+            if (!go.IsReady)
+                return false;
+        }
+        return true;
     }
 }

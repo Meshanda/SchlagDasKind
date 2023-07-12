@@ -766,9 +766,11 @@ MonoBehaviour:
     - Prefab: {fileID: 875522499274896146, guid: 8b3f32c53a7eae44294c0c89a388a3ea, type: 3}
       Numbers: 5
     Gold: 100
+  TimeBeforeNextWave: 5
   waveList: {fileID: 11400000, guid: e2c3ed086912e6e4d8e8e2f43aa21aa5, type: 2}
   enemyList: {fileID: 11400000, guid: 5cee2145c4948c64b91e09a88fa4f9ab, type: 2}
-  _spawnerModed: []
+  _spawnerModed:
+  - {fileID: 1701817843}
 --- !u!1001 &1339769397
 PrefabInstance:
   m_ObjectHideFlags: 0

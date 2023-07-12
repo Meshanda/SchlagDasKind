@@ -18,7 +18,6 @@ public class ModdedEnemieSpawner : MonoBehaviour
     {
         _enemiesToSpawn.Clear();
         _enemiesToSpawn = enemies;
-        Debug.Log("a");
         if (_enemiesToSpawn.Count > 0)
             StartCoroutine(SpawnEnemy());
     }

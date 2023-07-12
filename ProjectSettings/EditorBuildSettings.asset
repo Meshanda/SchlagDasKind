@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 8a6eb7e70730821428e717b6f2ee43fb
+  - enabled: 1
+    path: Assets/Scenes/ModedWaveLevel.unity
+    guid: 46eb37fe198b72141892c1a518d4c2e4
   m_configObjects: {}
