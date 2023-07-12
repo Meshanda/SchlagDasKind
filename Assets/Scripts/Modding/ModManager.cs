@@ -20,6 +20,7 @@ public class ModManager : MonoBehaviour
 
     private void Start()
     {
+        ModList.LoadModListJson();
         _previousMods = ModList.Mods.ToDictionary(mod => mod.Key, mod => mod.Value);
         InitFolder();
         RefreshMods();
@@ -80,6 +81,7 @@ public class ModManager : MonoBehaviour
 
     public void ApplyMods()
     {
+        ModList.SaveModListList();
         _previousMods = ModList.Mods.ToDictionary(mod => mod.Key, mod => mod.Value);
         foreach (var mod in ModList.Mods)
         {
