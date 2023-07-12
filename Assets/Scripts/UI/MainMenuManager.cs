@@ -96,6 +96,7 @@ public class MainMenuManager : MonoBehaviour
     public void LevelClickPlay()
     {
         //TODO: StartGame
+        SceneLoader.LoadLevel(Level.Level1);
     }
 
     #endregion

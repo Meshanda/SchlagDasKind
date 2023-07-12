@@ -6,6 +6,7 @@ public class MancheManager : MonoBehaviour
 {
     [SerializeField] private EnemySpawner[] _spawners;
     [SerializeField] private List<Waves> _waves;
+    public static event Action GameWon;
 
     protected float TimeBeforeNextWave;
     protected float _currentTimeBeforeNextWave;
@@ -53,6 +54,8 @@ public class MancheManager : MonoBehaviour
         if (_currentWave >= _waves.Count)
         {
             Debug.Log("fin");
+            GameWon?.Invoke();
+            Destroy(this);
             return;
         }
         

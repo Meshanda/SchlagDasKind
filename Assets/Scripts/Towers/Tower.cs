@@ -1,9 +1,11 @@
+using Monnaie;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
     [SerializeField] private LayerMask _targetLayerMask;
     [SerializeField] private GameObject _projectilePrefab;
+    [SerializeField] private GameObject _destroyMenu;
     private SpriteRenderer _spriteRenderer;
     
     [Header("Tower Properties")]
@@ -95,5 +97,17 @@ public class Tower : MonoBehaviour
             }
         }
         return closest;
+    }
+
+    public void ClickTower()
+    {
+        _destroyMenu.SetActive(!_destroyMenu.activeSelf);
+    }
+
+    public void DestroyTower()
+    {
+        MoneySystem.AddMoney?.Invoke(GoldCost / 2);
+        GameManager.SpawnEmplacement?.Invoke(transform);
+        Destroy(gameObject);
     }
 }

@@ -1,7 +1,7 @@
 [
 	{
 		"goldCost" : 200,
-		"towerVisual" : "models/SuperTour.png",
+		"towerVisual" : "/models/SuperTour.png",
 		"timeBetweenShoot" : 1,
 		"range" : 10,
 		"bulletDamage" : 10,
