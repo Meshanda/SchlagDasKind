@@ -249,6 +249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestroyButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2518406965019007313, guid: a12bf2c1105895e488662f2dc6d7e8bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3865202652308312792, guid: a12bf2c1105895e488662f2dc6d7e8bb, type: 3}
       propertyPath: _onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

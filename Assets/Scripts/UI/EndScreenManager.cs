@@ -37,7 +37,8 @@ public class EndScreenManager : MonoBehaviour
 
     public void ClickNextLevel()
     {
-        SceneLoader.LoadLevel(_gameManager.CurrentLevel + 1);
+        int res = ((int)_gameManager.CurrentLevel + 1) % (Enum.GetNames(typeof(Level)).Length);
+        SceneLoader.LoadLevel((Level)res);
     }
 
     public void ClickBackToMenu()

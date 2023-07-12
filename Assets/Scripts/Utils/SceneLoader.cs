@@ -29,7 +29,7 @@ public static class SceneLoader
         switch (level)
         {
             case Level.Level1:
-                SceneManager.LoadSceneAsync("ModedWaveLevel", LoadSceneMode.Single);
+                SceneManager.LoadSceneAsync(LEVEL_1, LoadSceneMode.Single);
                 break;
             case Level.Level2:
                 SceneManager.LoadSceneAsync(LEVEL_2, LoadSceneMode.Single);

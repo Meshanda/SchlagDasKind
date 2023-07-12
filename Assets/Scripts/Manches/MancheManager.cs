@@ -43,9 +43,9 @@ public class MancheManager : MonoBehaviour
         foreach (EnemySpawner go in _spawners) 
         {
             if (!go.IsReady) // isready => Empty
-                return true;
+                return false;
         }
-        return false;
+        return true;
     }
 
     // Update is called once per frame
@@ -57,8 +57,8 @@ public class MancheManager : MonoBehaviour
             GameWon?.Invoke();
             Destroy(this);
             return;
-        }           
-
+        }
+        Debug.Log(AreFilled());
         if(_currentTimeBeforeNextWave <= 0 && AreFilled()) 
         {
             _currentTimeBeforeNextWave = TimeBeforeNextWave;
