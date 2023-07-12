@@ -93,22 +93,17 @@ namespace Towers
 
         public void ClickLeftArrow()
         {
-            Debug.Log("Flèche gauche");
-            if (++_actualIndex > _maxIndex)
-                _actualIndex = 0;
+            if (--_actualIndex < 0)
+                _actualIndex = _maxIndex;
 
-            Debug.Log(_actualIndex);
             InitPreviews();
         }
 
         public void ClickRightArrow()
         {
-            Debug.Log("Flèche droite");
-            if (--_actualIndex < 0)
-                _actualIndex = _maxIndex;
+            if (++_actualIndex > _maxIndex)
+                _actualIndex = 0;
             
-            
-            Debug.Log(_actualIndex);
             InitPreviews();
         }
 

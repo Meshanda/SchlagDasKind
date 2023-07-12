@@ -42,8 +42,6 @@ public class Base : MonoBehaviour
 
             float enemyDamage = enemy.EnemyDamage;
 
-            Debug.Log(enemyDamage);
-            
             _currentHp.value -= enemyDamage;
             
             // Loose HP

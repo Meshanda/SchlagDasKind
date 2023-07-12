@@ -53,12 +53,11 @@ public class MancheManager : MonoBehaviour
     {
         if (IsWaveFinished())
         {
-            Debug.Log("fin");
             GameWon?.Invoke();
             Destroy(this);
             return;
         }
-        Debug.Log(AreFilled());
+        
         if(_currentTimeBeforeNextWave <= 0 && AreFilled()) 
         {
             _currentTimeBeforeNextWave = TimeBeforeNextWave;
