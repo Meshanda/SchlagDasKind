@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using UnityEngine;
 using Application = UnityEngine.Application;
 
 public static class ModList
@@ -48,14 +49,12 @@ public static class ModList
 
     private static bool FileExists()
     {
-        if (File.Exists(Path.GetDirectoryName(_savePath)))
+        if (Directory.Exists(Path.GetDirectoryName(_savePath)))
         {
             if (File.Exists(_savePath))
-            {
                 return true;
-            }
         }
-
+        
         return false;
     }
 }
