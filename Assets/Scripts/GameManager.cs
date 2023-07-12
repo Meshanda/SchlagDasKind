@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _emplacementTourPfb;
+    [SerializeField] private Transform _emplacementParent;
     public Level CurrentLevel;
+    
+    
+    public static Action<Transform> SpawnEmplacement;
     
     [HideInInspector] public bool GameWon;
 
@@ -12,12 +17,14 @@ public class GameManager : MonoBehaviour
     {
         MancheManager.GameWon += OnGameWin;
         Base.OnBaseDestruction += OnGameLose;
+        SpawnEmplacement += OnSpawnEmplacement;
     }
 
     private void OnDisable()
     {
         MancheManager.GameWon -= OnGameWin;
         Base.OnBaseDestruction -= OnGameLose;
+        SpawnEmplacement -= OnSpawnEmplacement;
     }
 
     private void Start()
@@ -41,5 +48,10 @@ public class GameManager : MonoBehaviour
         _gameEnded = true;
         GameWon = false;
         SceneLoader.LoadEndScreen();
+    }
+    
+    private void OnSpawnEmplacement(Transform position)
+    {
+        Instantiate(_emplacementTourPfb, position.position, Quaternion.identity, _emplacementParent);
     }
 }
