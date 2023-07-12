@@ -95,6 +95,9 @@ public class ModManager : MonoBehaviour
             _enemyList.value.Clear();
         if (_waveList.value != null)
             _waveList.value.Clear();
+        if (_towerModList.value != null)
+            _towerModList.value.Clear();
+
     }
 
     public void ApplyMods()

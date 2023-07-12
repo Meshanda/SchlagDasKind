@@ -10,6 +10,8 @@ namespace ScriptableObjects.Game
     {
         public void AddTowerMod(TowerModStruct inTowerModStruct)
         {
+            if (value == null)
+                value = new List<TowerModStruct>();
             value.Add(inTowerModStruct);
         }
         
@@ -23,6 +25,7 @@ namespace ScriptableObjects.Game
         
     }
 }
+[System.Serializable]
 public struct TowerModStruct 
 {
     public string lua;

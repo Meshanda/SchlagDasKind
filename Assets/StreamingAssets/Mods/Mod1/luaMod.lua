@@ -1,4 +1,5 @@
-var Tower_name = "basique";
-function Tower_name( )
-	return "Doom"
+Tower_name = "Doom";
+function FindTarget( )
+	-- body
 end
+

@@ -6,7 +6,7 @@
 		"range" : 10,
 		"bulletDamage" : 10,
 		"bulletSpeedPower" : 0.04,
-		"nameReference" : ""
+		"nameReference" : "Doom"
 	},
 	{
 		"goldCost" : 30,
