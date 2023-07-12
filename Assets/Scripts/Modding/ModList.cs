@@ -34,7 +34,7 @@ public static class ModList
     {
         if (!FileExists())
             InitFile();
-            
+        
         using var streamReader = new StreamReader(_savePath);
         var json = streamReader.ReadToEnd();
         
