@@ -41,6 +41,8 @@ public class Base : MonoBehaviour
                 return;
 
             float enemyDamage = enemy.EnemyDamage;
+
+            Debug.Log(enemyDamage);
             
             _currentHp.value -= enemyDamage;
             
