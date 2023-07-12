@@ -21,6 +21,7 @@ namespace Towers
         [SerializeField] private GameObject _arrows;
 
         [SerializeField] private TowersList _towersList;
+        [SerializeField] private TowerMod _towerModList;
 
         [FormerlySerializedAs("_towerPrefabs")]
         [Header("Prefabs")] 
@@ -134,6 +135,15 @@ namespace Towers
                     GameObject newTowerObject = Instantiate(_basePrefab, transform.position, Quaternion.identity);
 
                     var towerScript = newTowerObject.GetComponent<Tower>();
+                    foreach (var mod in _towerModList.value) 
+                    {
+                        if (mod.towerName.Equals(_towersList.value[clicIndex].nameReference)) 
+                        {
+                            towerScript.luaCode = mod.lua;
+                        }
+                    }
+
+                    
                     _towersList.value[clicIndex].CreateTowerFromData(towerScript);
                     Destroy(gameObject);
                 }

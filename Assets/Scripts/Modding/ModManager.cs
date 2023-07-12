@@ -13,12 +13,13 @@ public class ModManager : MonoBehaviour
     [SerializeField] private TowersList _towersList;
     [SerializeField] private EnemyList _enemyList;
     [SerializeField] private WaveList _waveList;
+    [SerializeField] private TowerMod _towerModList;
 
     public readonly string ModFolderPath = Application.streamingAssetsPath + "/Mods/";
     private const string TowersJsonFileName = "towers.json";
     private const string EnemiesJsonFileName = "enemies.json";
     private const string WavesJsonFileName = "waves.json";
-    private const string BaseJsonFileName = "base.json";
+    private const string LuaModFileName = "luaMod.lua";
 
     private readonly List<GameObject> _modToggles = new ();
     private Dictionary<string, bool> _previousMods = new ();
@@ -123,7 +124,9 @@ public class ModManager : MonoBehaviour
         {
             
             var filename = Path.GetFileName(file);
-            var jsonString = OpenJsonFile(file);
+            string jsonString = "";
+            if (Path.GetExtension(file) == ".json")
+                jsonString = OpenJsonFile(file);
             
             switch (filename)
             {
@@ -136,12 +139,17 @@ public class ModManager : MonoBehaviour
                     _enemyList.AddEnemyData(enemyData, inModPath);
                     break;
                 case WavesJsonFileName:
-                    Debug.Log("A");
                     List<WaveData> waveData = Utils.JsonConverter.GenericParseJson<List<WaveData>>(jsonString);
                     _waveList.AddWaveData(waveData);
                     break;
-                case BaseJsonFileName:
-                    // TODO: Call4
+                case LuaModFileName:
+                    var luaString = File.ReadAllText(file);
+                    var struc = new TowerModStruct
+                    {
+                        lua = luaString,
+                        towerName = "a"
+                    };
+                    _towerModList.AddTowerMod(struc);
                     break;
             }
         }

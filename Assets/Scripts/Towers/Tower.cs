@@ -1,4 +1,5 @@
 using Monnaie;
+using System;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -22,6 +23,7 @@ public class Tower : MonoBehaviour
     private Collider2D _target;
     [SerializeField] private Transform _zone;
 
+    public string luaCode;
     // Start is called before the first frame update
     public void Start()
     {
@@ -47,19 +49,26 @@ public class Tower : MonoBehaviour
         if(_currentTimeBetweenShoot <= 0 &&inRange.Length > 0) 
         {
             if (!IsTargetInRangeAndAlive())
-                _target = FindClosest(inRange);
+                _target = GetTargetInRange(inRange); 
             _currentTimeBetweenShoot = TimeBetweenShoot;
             GameObject go = Instantiate(_projectilePrefab, transform.position, Quaternion.identity);
             ProjectileMovement pm = go.GetComponent<ProjectileMovement>();
             if(pm == null)
             {
-                Debug.LogError("WTF projectile movement o� ?");
                 return;
             }
             pm.SetTarget(_target);
             pm.SetBulletProperties(SpeedPower, BulletPower);
-            Debug.Log("Shoot "+_target);
         }
+    }
+
+    private Collider2D GetTargetInRange(Collider2D[] inRange)
+    {
+        if(luaCode.Equals(""))
+            return FindClosest(inRange);
+        //if MODED CALL MOD METHOD
+        //lua
+        return FindClosest(inRange);
     }
 
     private bool IsTargetInRangeAndAlive() 
