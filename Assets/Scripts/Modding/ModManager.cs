@@ -2,13 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
+using ScriptableObjects.Game;
 using UnityEngine;
 
 public class ModManager : MonoBehaviour
 {
     [SerializeField] private Transform _panel;
     [SerializeField] private GameObject _modTogglePrefab;
-    
+    [SerializeField] private TowersList _towersList;
+
     public readonly string ModFolderPath = Application.streamingAssetsPath + "/Mods/";
     private const string TowersJsonFileName = "towers.json";
     private const string EnemiesJsonFileName = "enemies.json";
@@ -79,8 +82,16 @@ public class ModManager : MonoBehaviour
         ModList.Mods = _previousMods.ToDictionary(mod => mod.Key, mod => mod.Value);
     }
 
+    private void ClearData()
+    {
+        if(_towersList.value != null)
+            _towersList.value.Clear();
+    }
+
     public void ApplyMods()
     {
+        ClearData();
+        
         ModList.SaveModListList();
         _previousMods = ModList.Mods.ToDictionary(mod => mod.Key, mod => mod.Value);
         foreach (var mod in ModList.Mods)
@@ -96,10 +107,10 @@ public class ModManager : MonoBehaviour
         var files = Directory.EnumerateFiles(modPath)
             .Where(file => file.ToLower().EndsWith(".json") || file.ToLower().EndsWith(".lua")).ToList();
         
-        OpenModFiles(files);
+        OpenModFiles(files, modPath);
     }
 
-    private void OpenModFiles(List<string> modFiles)
+    private void OpenModFiles(List<string> modFiles, string inModPath)
     {
         foreach (var file in modFiles)
         {
@@ -110,7 +121,8 @@ public class ModManager : MonoBehaviour
             switch (filename)
             {
                 case TowersJsonFileName:
-                    // TODO: Call1
+                    List<TowerData> towerData = Utils.JsonConverter.GenericParseJson<List<TowerData>>(jsonString);
+                    _towersList.AddTowerData(towerData, inModPath);
                     continue;
                 case EnemiesJsonFileName:
                     // TODO: Call2

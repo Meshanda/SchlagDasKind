@@ -38,12 +38,15 @@ public class TowerData
         toSet.TowerSprite = _towerSprite;
     }
 
-    public async Task<bool> CreateSpriteFromPath()
+    public async Task<bool> CreateSpriteFromPath(string modPath)
     {
         Texture2D tex2D;
+        string finalPath = modPath + towerVisual;
 
-        if (File.Exists(towerVisual)){
-            var fileData = await File.ReadAllBytesAsync(towerVisual);
+        finalPath = finalPath.Replace("//", "/");
+
+        if (File.Exists(finalPath)){
+            var fileData = await File.ReadAllBytesAsync(finalPath);
             tex2D = new Texture2D(2, 2);
             
             if (tex2D.LoadImage(fileData))
