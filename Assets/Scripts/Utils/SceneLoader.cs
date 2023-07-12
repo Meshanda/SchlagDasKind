@@ -6,7 +6,8 @@ public enum Level
 {
     Level1,
     Level2,
-    Level3
+    Level3,
+    LevelMod
 }
 
 public static class SceneLoader 
@@ -16,6 +17,7 @@ public static class SceneLoader
     private const string LEVEL_1 = "Level1";
     private const string LEVEL_2 = "Level2";
     private const string LEVEL_3 = "Level3";
+    private const string LEVEL_MOD = "ModedWaveLevel";
 
     public static void LoadMainMenu()
     {
@@ -34,6 +36,9 @@ public static class SceneLoader
                 break;
             case Level.Level3:
                 SceneManager.LoadSceneAsync(LEVEL_3, LoadSceneMode.Single);
+                break;
+            case Level.LevelMod:
+                SceneManager.LoadSceneAsync(LEVEL_MOD, LoadSceneMode.Single);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(level), level, null);
