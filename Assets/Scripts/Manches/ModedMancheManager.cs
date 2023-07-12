@@ -15,7 +15,6 @@ public class ModedMancheManager : MancheManager
         {
             base.FillSpawner();
         }
-        Debug.Log(_currentWave);
         List<EnemyData> gos = new List<EnemyData>();
 
         foreach (var enemi in waveList.value[_currentWave].wave)
@@ -52,12 +51,17 @@ public class ModedMancheManager : MancheManager
         {
             return base.AreFilled();
         }
-
         foreach (ModdedEnemieSpawner go in _spawnerModed)
         {
-            if (!go.IsReady)
-                return false;
+            if (go.IsReady)
+                return true;
         }
-        return true;
+        return false;
+    }
+
+
+    protected override bool IsWaveFinished()
+    {
+        return _currentWave >= waveList.value.Count;
     }
 }

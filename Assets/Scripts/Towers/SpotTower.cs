@@ -116,7 +116,6 @@ namespace Towers
             int clicIndex = (_actualIndex + index)%(_maxIndex + 1);
             
             
-            Debug.Log($"Click Spot {index}");
             if (clicIndex < _baseTowerPrefabs.Count)
             {
                 if (!_baseTowerPrefabs[clicIndex].TryGetComponent(out Tower tower)) return;

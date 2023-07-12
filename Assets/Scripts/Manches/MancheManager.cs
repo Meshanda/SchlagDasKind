@@ -42,45 +42,45 @@ public class MancheManager : MonoBehaviour
     {
         foreach (EnemySpawner go in _spawners) 
         {
-            if (!go.IsReady)
-                return false;
+            if (!go.IsReady) // isready => Empty
+                return true;
         }
-        return true;
+        return false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (_currentWave >= _waves.Count)
+        if (IsWaveFinished())
         {
             Debug.Log("fin");
             GameWon?.Invoke();
             Destroy(this);
             return;
-        }
-        
-        if (!AreFilled())
-        {
-            Debug.Log("update");
-            _currentTimeBeforeNextWave -= Time.deltaTime;
-            if (!_countStarted) 
-            {
-                AddGold();
-                _currentWave++;
-                Debug.Log("added");
-            }
+        }           
 
-        }
-           
-
-        if(_currentTimeBeforeNextWave <= 0) 
+        if(_currentTimeBeforeNextWave <= 0 && AreFilled()) 
         {
             _currentTimeBeforeNextWave = TimeBeforeNextWave;
             _countStarted = false;
             FillSpawner();
             // Add Coins 
         }
+
+        if (AreFilled())
+        {
+            _currentTimeBeforeNextWave -= Time.deltaTime;
+            if (!_countStarted)
+            {
+                AddGold();
+                _currentWave++;
+            }
+
+        }
+    }
+    protected virtual bool IsWaveFinished() 
+    {
+        return _currentWave >= _waves.Count;
     }
 
     public void AddGold() 
