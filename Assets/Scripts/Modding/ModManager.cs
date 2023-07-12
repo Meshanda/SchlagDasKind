@@ -20,7 +20,6 @@ public class ModManager : MonoBehaviour
     private const string TowersJsonFileName = "towers.json";
     private const string EnemiesJsonFileName = "enemies.json";
     private const string WavesJsonFileName = "waves.json";
-    private const string LuaModFileName = "luaMod.lua";
 
     private readonly List<GameObject> _modToggles = new ();
     private Dictionary<string, bool> _previousMods = new ();
@@ -118,7 +117,7 @@ public class ModManager : MonoBehaviour
     {
         var files = Directory.EnumerateFiles(modPath)
             .Where(file => file.ToLower().EndsWith(".json") || file.ToLower().EndsWith(".lua")).ToList();
-        
+
         OpenModFiles(files, modPath);
     }
 
@@ -126,10 +125,11 @@ public class ModManager : MonoBehaviour
     {
         foreach (var file in modFiles)
         {
-            
             var filename = Path.GetFileName(file);
+            var extension = Path.GetExtension(file);
+            
             string jsonString = "";
-            if (Path.GetExtension(file) == ".json")
+            if (extension == ".json")
                 jsonString = OpenJsonFile(file);
             
             switch (filename)
@@ -146,7 +146,9 @@ public class ModManager : MonoBehaviour
                     List<WaveData> waveData = Utils.JsonConverter.GenericParseJson<List<WaveData>>(jsonString);
                     _waveList.AddWaveData(waveData);
                     break;
-                case LuaModFileName:
+                default:
+                    if (extension != ".lua") break;
+
                     var luaString = File.ReadAllText(file);
                     Script script = new Script();
 
