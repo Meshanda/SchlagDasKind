@@ -58,13 +58,11 @@ public class SoundManager : MonoBehaviour
 
     public void PlayLooseMusic()
     {
-        _musicSource.clip = _looseMusic;
-        _musicSource.Play();
+        _effectSource.PlayOneShot(_looseMusic);
     }
 
     public void PlayVictoryMusic()
     {
-        _musicSource.clip = _victoryMusic;
-        _musicSource.Play();
+        _effectSource.PlayOneShot(_victoryMusic);
     }
 }
