@@ -1399,7 +1399,7 @@ MonoBehaviour:
   _musicSource: {fileID: 1910286843}
   _effectSource: {fileID: 105716362}
   _victoryMusic: {fileID: 8300000, guid: 18011e46471b1a048a73ac7fac67ba30, type: 3}
-  _looseMusic: {fileID: 8300000, guid: ce74e828c7009b24fb6c3cc3b20585c2, type: 3}
+  _looseMusic: {fileID: 8300000, guid: 776a6be6730dae340aae4149a291d0f1, type: 3}
   _musicMenu: {fileID: 8300000, guid: 9051e42eee610c6439f29d7cd4fa6511, type: 3}
   _musicGame: {fileID: 8300000, guid: 544c09d3c7b7ef246a2c220d90ace65b, type: 3}
   _buttonSound: {fileID: 8300000, guid: e3f8821d86d97ef4aa25b12c118df082, type: 3}
