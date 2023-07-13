@@ -24,7 +24,7 @@ public class Tower : MonoBehaviour
     private Collider2D _target;
     [SerializeField] private Transform _zone;
 
-    public string luaCode;
+    public Script luaCode;
     // Start is called before the first frame update
     public void Start()
     {
@@ -65,15 +65,15 @@ public class Tower : MonoBehaviour
 
     private Collider2D GetTargetInRange(Collider2D[] inRange)
     {
-        if(luaCode.Equals(""))
+        if(luaCode == null)
             return FindClosest(inRange);
         //if MODED CALL MOD METHOD
         //lua
-        Script script = new Script();
-        script.DoString(luaCode);
         
-        DynValue res = script.Call(script.Globals["FindTarget"], inRange);
+        DynValue res = luaCode.Call(luaCode.Globals["FindTarget"], inRange);
         Collider2D collider = res.ToObject<Collider2D>();
+        if (FindClosest(inRange) == null)
+            return FindClosest(inRange);
         return collider;
     }
 

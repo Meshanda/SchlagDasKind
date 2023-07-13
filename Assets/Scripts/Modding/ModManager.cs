@@ -157,7 +157,7 @@ public class ModManager : MonoBehaviour
                     DynValue res = script.Globals.Get("Tower_name");
                     var struc = new TowerModStruct
                     {
-                        lua = luaString,
+                        lua = script,
                         towerName = res.String
                     };
                     _towerModList.AddTowerMod(struc);
