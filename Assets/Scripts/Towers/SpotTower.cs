@@ -60,13 +60,13 @@ namespace Towers
                 if (!_baseTowerPrefabs[index].TryGetComponent(out Tower tower))
                     throw new Exception("GameObject Tower does not have Tower Script!!!!");
                 
-                preview.ChangePreview(tower.GoldCost, (int)tower.BulletPower, (int)tower.TimeBetweenShoot, (int)tower.Range, tower.TowerSprite);
+                preview.ChangePreview(tower.GoldCost, (int)tower.BulletPower, 1/tower.TimeBetweenShoot, (int)tower.Range, tower.TowerSprite);
             }
             else
             {
                 index -= _baseTowerPrefabs.Count;
                 TowerData towerData = _towersList.value[index];
-                preview.ChangePreview(towerData.goldCost, (int)towerData.bulletDamage, (int)towerData.timeBetweenShoot, (int)towerData.range, towerData.TowerSprite != null? towerData.TowerSprite : _baseSprite);
+                preview.ChangePreview(towerData.goldCost, (int)towerData.bulletDamage, 1/towerData.timeBetweenShoot, (int)towerData.range, towerData.TowerSprite != null? towerData.TowerSprite : _baseSprite);
             }
         }
 

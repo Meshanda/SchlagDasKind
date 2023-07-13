@@ -49,8 +49,10 @@ public class Enemy : MonoBehaviour
     public void DamageEnemy(float damage)
     {
         lifePoint -= damage;
+        SoundManager.Instance.PlayTouchEnemySound();
 
         if (lifePoint > 0.0f) return;
+
         Monnaie.MoneySystem.AddMoney(GoldEarned);
         onEnemyDeath?.Invoke(this);
         Destroy(gameObject);
