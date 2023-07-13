@@ -23,12 +23,16 @@ public class EndScreenManager : MonoBehaviour
 
     private void InitWin()
     {
+        SoundManager.Instance.PlayVictoryMusic();
+
         _winCanvas.SetActive(true);
         _loseCanvas.SetActive(false);
     }
 
     private void InitLose()
     {
+        SoundManager.Instance.PlayLooseMusic();
+
         _winCanvas.SetActive(false);
         _loseCanvas.SetActive(true);
     }

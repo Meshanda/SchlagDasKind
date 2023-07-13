@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5100929071851772254}
   - component: {fileID: 5100929071851772249}
+  - component: {fileID: 9196731465142547983}
   m_Layer: 5
   m_Name: BlueLevelButton
   m_TagString: Untagged
@@ -83,6 +84,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9196731465142547983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5100929071851772255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51da2830419fde34b9c5dc54e55a2b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5100929071965191850
 GameObject:
   m_ObjectHideFlags: 0
