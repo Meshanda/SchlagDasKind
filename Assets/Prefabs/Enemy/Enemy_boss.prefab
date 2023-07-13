@@ -67,7 +67,7 @@ MonoBehaviour:
   enemyGradeDamage: 50
   enemyDamageOverride: 0
   GoldEarned: 200
-  sprite: {fileID: -7211942938903408927, guid: 2366eae9f40af86419045ff062bfad24, type: 3}
+  sprite: {fileID: 2768579851918101041, guid: 2366eae9f40af86419045ff062bfad24, type: 3}
   nameReference: 
   _pathFollower: {fileID: 875522499274896149}
   _spriteRenderer: {fileID: 875522500181663074}
@@ -170,7 +170,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -7211942938903408927, guid: 2366eae9f40af86419045ff062bfad24, type: 3}
+  m_Sprite: {fileID: 2768579851918101041, guid: 2366eae9f40af86419045ff062bfad24, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

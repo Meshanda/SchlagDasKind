@@ -28,6 +28,6 @@ namespace ScriptableObjects.Game
 [System.Serializable]
 public struct TowerModStruct 
 {
-    public string lua;
+    public MoonSharp.Interpreter.Script lua;
     public string towerName;
 }
