@@ -132,10 +132,8 @@ namespace Towers
                     var towerScript = newTowerObject.GetComponent<Tower>();
                     foreach (var mod in _towerModList.value) 
                     {
-                        if (mod.towerName.Equals(_towersList.value[clicIndex].nameReference)) 
-                        {
+                        if(mod.towerName.Equals(_towersList.value[clicIndex].nameReference))
                             towerScript.luaCode = mod.lua;
-                        }
                     }
 
                     

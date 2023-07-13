@@ -160,7 +160,6 @@ public class ModManager : MonoBehaviour
                         lua = luaString,
                         towerName = res.String
                     };
-                    Debug.Log(res.String);
                     _towerModList.AddTowerMod(struc);
                     break;
             }

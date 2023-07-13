@@ -1,4 +1,5 @@
 using Monnaie;
+using MoonSharp.Interpreter;
 using System;
 using UnityEngine;
 
@@ -68,7 +69,12 @@ public class Tower : MonoBehaviour
             return FindClosest(inRange);
         //if MODED CALL MOD METHOD
         //lua
-        return FindClosest(inRange);
+        Script script = new Script();
+        script.DoString(luaCode);
+        
+        DynValue res = script.Call(script.Globals["FindTarget"], inRange);
+        Collider2D collider = res.ToObject<Collider2D>();
+        return collider;
     }
 
     private bool IsTargetInRangeAndAlive() 
