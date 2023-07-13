@@ -1398,12 +1398,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicSource: {fileID: 1910286843}
   _effectSource: {fileID: 105716362}
-  _victoryMusic: {fileID: 8300000, guid: a15b453a5f9304f45aa26ab6d434c0da, type: 3}
-  _looseMusic: {fileID: 8300000, guid: a15b453a5f9304f45aa26ab6d434c0da, type: 3}
-  _musicMenu: {fileID: 8300000, guid: a15b453a5f9304f45aa26ab6d434c0da, type: 3}
-  _musicGame: {fileID: 8300000, guid: c7c7207ef8763b74fa869bedbea52b4f, type: 3}
+  _victoryMusic: {fileID: 0}
+  _looseMusic: {fileID: 0}
+  _musicMenu: {fileID: 8300000, guid: 9051e42eee610c6439f29d7cd4fa6511, type: 3}
+  _musicGame: {fileID: 8300000, guid: 544c09d3c7b7ef246a2c220d90ace65b, type: 3}
   _buttonSound: {fileID: 8300000, guid: e3f8821d86d97ef4aa25b12c118df082, type: 3}
-  _touchEnemySound: {fileID: 0}
+  _touchEnemySound: {fileID: 8300000, guid: 09d5001d0c40493449f2bac59d8c933c, type: 3}
 --- !u!1 &776801022
 GameObject:
   m_ObjectHideFlags: 0
